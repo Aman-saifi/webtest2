@@ -14,7 +14,7 @@
             const imageNameInput = document.getElementById('imageNameInput').value;
             const imageContainer = document.getElementById('image-container');
 
-            // Clearing previous images and numbers
+            // Clearing previous images
             imageContainer.innerHTML = '';
 
             // Splitting entered image names by commas
@@ -29,7 +29,7 @@
 
                 // Creating a paragraph element for displaying the image number
                 let para = document.createElement('p');
-                para.textContent = ${index + 1};
+                para.textContent = Image ${index + 1};
 
                 // Appending the image and corresponding number
                 imageContainer.appendChild(img);
