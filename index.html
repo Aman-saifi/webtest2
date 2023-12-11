@@ -3,39 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Image Display</title>
+    <title>Image Display</title>
+    <style>
+        /* Add some basic styling for the image grid */
+        #imageGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <input type="text" id="image1" placeholder="Enter image names (comma-separated)" oninput="displayImages()">
-    <div id="image-container"></div>
+    <!-- Image grid container -->
+    <div id="imageGrid"></div>
+
+    <!-- JavaScript file -->
+    <script src="script.js"></script>
 
     <script>
-        function displayImages() {
-            const imageNameInput = document.getElementById('imageNameInput').value;
-            const imageContainer = document.getElementById('image-container');
+    document.addEventListener("DOMContentLoaded", function () {
+    const imageGrid = document.getElementById("imageGrid");
 
-            // Clearing previous images
-            imageContainer.innerHTML = '';
+    // List of image filenames
+    const imageNames = ["image1.jpg", "image2.jpg", "image3.jpg"];
 
-            // Splitting entered image names by commas
-            const imageNames = imageNameInput.split(',');
-
-            // Displaying each image with corresponding number
-            imageNames.forEach(function(imageName, index) {
-                // Creating image element
-                let img = document.createElement('img');
-                img.src = https://your-image-repository.com/path/to/your/${imageName.trim()}.jpg;
-                img.alt = Description of ${imageName.trim()} image;
-
-                // Creating a paragraph element for displaying the image number
-                let para = document.createElement('p');
-                para.textContent = Image ${index + 1};
-
-                // Appending the image and corresponding number
-                imageContainer.appendChild(img);
-                imageContainer.appendChild(para);
-            });
-        }
-    </script>
+    // Loop through image names and create image elements
+    imageNames.forEach(function (imageName) {
+        const imgElement = document.createElement("img");
+        imgElement.src = "/images/" + imageName; // Adjust the path as needed
+        imgElement.alt = imageName; // Set alt attribute for accessibility
+        imageGrid.appendChild(imgElement);
+    });
+});
+        
+</script>
 </body>
 </html>
