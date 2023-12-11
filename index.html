@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Display</title>
+</head>
+<body>
+    <input type="text" id="imageNameInput" placeholder="Enter image names (comma-separated)" oninput="displayImages()">
+    <div id="image-container"></div>
+
+    <script>
+        function displayImages() {
+            const imageNameInput = document.getElementById('imageNameInput').value;
+            const imageContainer = document.getElementById('image-container');
+
+            // Clearing previous images and numbers
+            imageContainer.innerHTML = '';
+
+            // Splitting entered image names by commas
+            const imageNames = imageNameInput.split(',');
+
+            // Displaying each image with corresponding number
+            imageNames.forEach(function(imageName, index) {
+                // Creating image element
+                let img = document.createElement('img');
+                img.src = https://your-image-repository.com/path/to/your/${imageName.trim()}.jpg;
+                img.alt = Description of ${imageName.trim()} image;
+
+                // Creating a paragraph element for displaying the image number
+                let para = document.createElement('p');
+                para.textContent = ${index + 1};
+
+                // Appending the image and corresponding number
+                imageContainer.appendChild(img);
+                imageContainer.appendChild(para);
+            });
+        }
+    </script>
+</body>
+</html>
